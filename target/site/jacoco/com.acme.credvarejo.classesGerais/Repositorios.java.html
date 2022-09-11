@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Repositorios.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Atv1</a> &gt; <a href="index.source.html" class="el_package">com.acme.credvarejo.classesGerais</a> &gt; <span class="el_source">Repositorios.java</span></div><h1>Repositorios.java</h1><pre class="source lang-java linenums">package com.acme.credvarejo.classesGerais;
+
+import com.acme.credvarejo.cliente.Cliente;
+import com.acme.credvarejo.conta.ContaCrediario;
+import com.acme.credvarejo.conta.MovimentoCrediarioCredito;
+import com.acme.credvarejo.conta.MovimentoCrediarioDebito;
+
+public class Repositorios extends RepositorioRegistro{
+	
+<span class="fc" id="L10">	private Cliente[] clienteRepo = new Cliente[150];</span>
+<span class="fc" id="L11">	private ContaCrediario[] contaCrediarioRepo = new ContaCrediario[150];</span>
+<span class="fc" id="L12">	private MovimentoCrediarioCredito[] movimentoCrediarioCreditoRepo = new MovimentoCrediarioCredito[150];</span>
+<span class="fc" id="L13">	private MovimentoCrediarioDebito[] movimentoCrediarioDebitoRepo = new MovimentoCrediarioDebito[150];</span>
+	
+	
+	public Repositorios(int posicao) {
+<span class="fc" id="L17">		super(posicao);</span>
+<span class="fc" id="L18">	}</span>
+	
+	public void setClienteRepo(int i, Cliente clienteRepo) {
+<span class="fc" id="L21">		this.clienteRepo[i] = clienteRepo;</span>
+<span class="fc" id="L22">	}</span>
+	
+	public Cliente getClienteRepo(int i) {
+<span class="fc" id="L25">		return clienteRepo[i];</span>
+	}
+	
+	public void setContaCrediarioRepo(int i, ContaCrediario contaCrediarioRepo) {
+<span class="nc" id="L29">		this.contaCrediarioRepo[i] = contaCrediarioRepo;</span>
+<span class="nc" id="L30">	}</span>
+	
+	public ContaCrediario getContaCrediarioRepo(int i) {
+<span class="nc" id="L33">		return contaCrediarioRepo[i];</span>
+	}
+	
+	public void setMovimentoCrediarioCreditoRepo(int i, MovimentoCrediarioCredito movimentoCrediarioCreditoRepo) {
+<span class="nc" id="L37">		this.movimentoCrediarioCreditoRepo[i] = movimentoCrediarioCreditoRepo;</span>
+<span class="nc" id="L38">	}</span>
+	
+	public MovimentoCrediarioCredito getMovimentoCrediarioCreditoRepo(int i) {
+<span class="nc" id="L41">		return movimentoCrediarioCreditoRepo[i];</span>
+	}
+	
+	public void setMovimentoCrediarioDebitoRepo(int i, MovimentoCrediarioDebito movimentoCrediarioDebitoRepo) {
+<span class="nc" id="L45">		this.movimentoCrediarioDebitoRepo[i] = movimentoCrediarioDebitoRepo;</span>
+<span class="nc" id="L46">	}</span>
+	
+	public MovimentoCrediarioDebito getMovimentoCrediarioDebitoRepo(int i) {
+<span class="nc" id="L49">		return movimentoCrediarioDebitoRepo[i];</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

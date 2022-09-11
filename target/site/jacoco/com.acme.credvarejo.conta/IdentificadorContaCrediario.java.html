@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IdentificadorContaCrediario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Atv1</a> &gt; <a href="index.source.html" class="el_package">com.acme.credvarejo.conta</a> &gt; <span class="el_source">IdentificadorContaCrediario.java</span></div><h1>IdentificadorContaCrediario.java</h1><pre class="source lang-java linenums">package com.acme.credvarejo.conta;
+
+public class IdentificadorContaCrediario {
+	private Long numero;
+	
+<span class="fc" id="L6">	public IdentificadorContaCrediario(Long numero) {</span>
+<span class="fc" id="L7">		this.numero = numero;</span>
+<span class="fc" id="L8">	}</span>
+	
+	public int calcularDigitoVerificador() {
+<span class="fc" id="L11">		Long soma = (somaNumeros(numero) % 11);</span>
+<span class="fc" id="L12">		return soma.intValue();</span>
+	}
+	
+	public static Long somaNumeros(Long numero){
+        String numeros;
+        int x;
+<span class="fc" id="L18">        Long soma = 0L;</span>
+<span class="fc" id="L19">        numeros = numero.toString();</span>
+<span class="fc" id="L20">        x = numeros.length();</span>
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">        if ( x == 0 ){</span>
+<span class="nc" id="L22">            soma = 0L;</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        } else if ( x == 1 ){</span>
+<span class="fc" id="L24">            soma = numero;</span>
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">        } else if ( x &gt; 1 ){</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">            for(char numeroParaSoma: numeros.toCharArray()){</span>
+<span class="fc" id="L27">                soma += Long.valueOf(Character.toString(numeroParaSoma));</span>
+            }     
+        }  
+<span class="fc" id="L30">        return soma;</span>
+    }
+			
+	public boolean verificarValidadeDigito(int valor) {
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">		if(valor == calcularDigitoVerificador()) {</span>
+<span class="nc" id="L35">			return true;</span>
+		}else {
+<span class="fc" id="L37">			return false;</span>
+		}
+	}
+	
+	public long getNumero() {
+<span class="fc" id="L42">		return this.numero;</span>
+	}
+
+	public void setNumero(long novoNumero) {
+<span class="nc" id="L46">		this.numero = novoNumero;</span>
+<span class="nc" id="L47">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

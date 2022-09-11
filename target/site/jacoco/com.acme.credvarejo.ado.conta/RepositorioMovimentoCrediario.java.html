@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RepositorioMovimentoCrediario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Atv1</a> &gt; <a href="index.source.html" class="el_package">com.acme.credvarejo.ado.conta</a> &gt; <span class="el_source">RepositorioMovimentoCrediario.java</span></div><h1>RepositorioMovimentoCrediario.java</h1><pre class="source lang-java linenums">package com.acme.credvarejo.ado.conta;
+
+
+import com.acme.credvarejo.conta.MovimentoCrediarioCredito;
+import com.acme.credvarejo.conta.MovimentoCrediarioDebito;
+
+public class RepositorioMovimentoCrediario implements InterfaceRepositorioMovimentoCrediario{
+	private MovimentoCrediarioCredito[] movimentacaoCredito;
+	private MovimentoCrediarioDebito[] movimentacaoDebito;
+	private int indiceC;
+	private int indiceD;
+	
+<span class="fc" id="L13">	public RepositorioMovimentoCrediario() {</span>
+<span class="fc" id="L14">		movimentacaoCredito = new MovimentoCrediarioCredito[150];</span>
+<span class="fc" id="L15">		movimentacaoDebito = new MovimentoCrediarioDebito[150];</span>
+<span class="fc" id="L16">		indiceC = 0;</span>
+<span class="fc" id="L17">		indiceD = 0;</span>
+<span class="fc" id="L18">	}</span>
+	
+	public void incluirCredito(MovimentoCrediarioCredito c) {
+<span class="fc" id="L21">		movimentacaoCredito[indiceC] = c;</span>
+<span class="fc" id="L22">		indiceC++;</span>
+<span class="fc" id="L23">	}</span>
+	
+	public void incluirDebito(MovimentoCrediarioDebito d) {
+<span class="nc" id="L26">		movimentacaoDebito[indiceD] = d;</span>
+<span class="nc" id="L27">		indiceD++;</span>
+<span class="nc" id="L28">	}</span>
+	
+	public void buscarTodos() {
+<span class="nc" id="L31">		System.out.println(&quot;Cr�dito: \n&quot;);</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">		for(int i = 0; i &lt; indiceC; i++) {</span>
+<span class="nc" id="L33">			System.out.println(&quot;Nome: &quot;+movimentacaoCredito[i].getContaCrediario().getCliente().getNome()+</span>
+<span class="nc" id="L34">							   &quot;\nValor da Transa��o: &quot;+movimentacaoCredito[i].getValorTransacao()+</span>
+<span class="nc" id="L35">							   &quot;\nSaldo devido: &quot;+movimentacaoCredito[i].getContaCrediario().getSaldoDevido()+</span>
+<span class="nc" id="L36">							   &quot;\nHora da transa��o: &quot;+movimentacaoCredito[i].getDataHoraDaOperacao()+</span>
+<span class="nc" id="L37">							   &quot;\nEst� ativa: &quot;+movimentacaoCredito[i].getContaCrediario().isAtiva()+&quot;\n&quot;);</span>
+		}
+<span class="nc" id="L39">		System.out.println(&quot;D�bito: \n&quot;);</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">		for(int i = 0; i &lt; indiceD; i++) {</span>
+<span class="nc" id="L41">			System.out.println(&quot;Nome: &quot;+movimentacaoDebito[i].getContaCrediario().getCliente().getNome()+</span>
+<span class="nc" id="L42">							   &quot;\nValor da Transa��o: &quot;+movimentacaoDebito[i].getValorTransacao()+</span>
+<span class="nc" id="L43">							   &quot;\nSaldo devido: &quot;+movimentacaoDebito[i].getContaCrediario().getSaldoDevido()+</span>
+<span class="nc" id="L44">							   &quot;\nHora da transa��o: &quot;+movimentacaoDebito[i].getDataHoraDaOperacao()+</span>
+<span class="nc" id="L45">							   &quot;\nEst� ativa: &quot;+movimentacaoDebito[i].getContaCrediario().isAtiva()+&quot;\n&quot;);</span>
+		}
+<span class="nc" id="L47">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

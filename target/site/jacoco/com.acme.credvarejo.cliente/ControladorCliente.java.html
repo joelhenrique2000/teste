@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControladorCliente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Atv1</a> &gt; <a href="index.source.html" class="el_package">com.acme.credvarejo.cliente</a> &gt; <span class="el_source">ControladorCliente.java</span></div><h1>ControladorCliente.java</h1><pre class="source lang-java linenums">package com.acme.credvarejo.cliente;
+
+import com.acme.credvarejo.ado.cliente.InterfaceRepositorioCliente;
+
+public class ControladorCliente {
+	private InterfaceRepositorioCliente repositorio;
+	
+<span class="fc" id="L8">	public ControladorCliente(InterfaceRepositorioCliente repositorio) {</span>
+<span class="fc" id="L9">		this.repositorio = repositorio;</span>
+<span class="fc" id="L10">	}</span>
+	
+	public void incluir(Cliente cliente) {
+<span class="pc bpc" id="L13" title="1 of 2 branches missed.">		if(cliente == null) {</span>
+<span class="nc" id="L14">			System.out.println(&quot;Inv�lido!&quot;);</span>
+		}else {
+<span class="fc" id="L16">			cliente.validar();</span>
+<span class="fc" id="L17">			repositorio.incluir(cliente);</span>
+		}
+<span class="fc" id="L19">	}</span>
+	
+	public void alterar(long atual, String nova) {
+<span class="nc" id="L22">		repositorio.alterar(atual, nova);</span>
+<span class="nc" id="L23">	}</span>
+	
+	public void excluir(long valor) {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">		if(valor == 0) {</span>
+<span class="nc" id="L27">			System.out.println(&quot;CPF inv�lido!&quot;);</span>
+		}else {
+<span class="nc" id="L29">			repositorio.excluir(valor);</span>
+		}
+<span class="nc" id="L31">	}</span>
+	
+	public void buscar(long valor) {
+<span class="nc bnc" id="L34" title="All 2 branches missed.">		if(valor == 0) {</span>
+<span class="nc" id="L35">			System.out.println(&quot;CPF inv�lido!&quot;);</span>
+		}else {
+<span class="nc" id="L37">			repositorio.buscarPorChave(valor);</span>
+		}
+<span class="nc" id="L39">	}</span>
+	
+	public void buscarTodos() {
+<span class="nc" id="L42">		repositorio.buscarTodos();</span>
+<span class="nc" id="L43">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContaCrediarioEspecial.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Atv1</a> &gt; <a href="index.source.html" class="el_package">com.acme.credvarejo.contaCrediario</a> &gt; <span class="el_source">ContaCrediarioEspecial.java</span></div><h1>ContaCrediarioEspecial.java</h1><pre class="source lang-java linenums">package com.acme.credvarejo.contaCrediario;
+
+import com.acme.credvarejo.cliente.Cliente;
+import com.acme.credvarejo.conta.ContaCrediario;
+import com.acme.credvarejo.conta.IdentificadorContaCrediario;
+
+public class ContaCrediarioEspecial extends ContaCrediario{
+	private double percentualDeDesconto;
+	private int pontosAcumulados;
+	
+	public ContaCrediarioEspecial(IdentificadorContaCrediario identificadorConta, Cliente cliente, double saldoDevido, double limiteDeCredito, int vencimento, boolean ativa, double percentualDeDesconto, int pontosAcumulados) {
+<span class="fc" id="L12">		super(identificadorConta, cliente, saldoDevido, limiteDeCredito, vencimento, ativa);</span>
+<span class="fc" id="L13">		this.percentualDeDesconto = percentualDeDesconto;</span>
+<span class="fc" id="L14">		this.pontosAcumulados = pontosAcumulados;</span>
+<span class="fc" id="L15">		pontosAcumulados = 0;</span>
+<span class="fc" id="L16">	}</span>
+	
+	//SOBRECARGA
+	public ContaCrediarioEspecial(IdentificadorContaCrediario identificadorConta, Cliente cliente, double saldoDevido, double limiteDeCredito, int vencimento, boolean ativa, double percentualDeDesconto) {
+<span class="fc" id="L20">		super(identificadorConta, cliente, saldoDevido, limiteDeCredito, vencimento, ativa);</span>
+<span class="fc" id="L21">		this.percentualDeDesconto = percentualDeDesconto;</span>
+<span class="fc" id="L22">	}</span>
+	
+	public void efetuarPagamento(double valor) {
+<span class="fc" id="L25">		super.efetuarPagamento(valor);</span>
+		
+<span class="fc" id="L27">		double pontos = valor / 100;</span>
+<span class="fc" id="L28">		this.pontosAcumulados += (int)pontos;</span>
+<span class="fc" id="L29">	}</span>
+	
+	//SOBRECARGA
+	public void efetuarPagamento(double valor, double percentualDeDescontoPassado) {
+<span class="fc bfc" id="L33" title="All 4 branches covered.">		if(percentualDeDesconto == 0 &amp;&amp; percentualDeDescontoPassado == 0) {</span>
+<span class="fc" id="L34">			efetuarPagamento(valor);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">		}else if(percentualDeDesconto &gt; percentualDeDescontoPassado){</span>
+<span class="fc" id="L36">			double saldoDev = getSaldoDevido();</span>
+<span class="fc" id="L37">			double desconto = saldoDev * (percentualDeDesconto / 100);</span>
+<span class="fc" id="L38">			saldoDev -= desconto;</span>
+<span class="fc" id="L39">			saldoDev -= valor;</span>
+<span class="fc" id="L40">			setSaldoDevido(saldoDev);</span>
+			
+<span class="fc" id="L42">			double pontos = valor / 100;</span>
+<span class="fc" id="L43">			this.pontosAcumulados += (int)pontos;</span>
+<span class="fc" id="L44">		}else {	</span>
+<span class="fc" id="L45">			double saldoDev = getSaldoDevido();</span>
+<span class="fc" id="L46">			double desconto = saldoDev * (percentualDeDescontoPassado / 100);</span>
+<span class="fc" id="L47">			saldoDev -= desconto;</span>
+<span class="fc" id="L48">			saldoDev -= valor;</span>
+<span class="fc" id="L49">			setSaldoDevido(saldoDev);</span>
+			
+<span class="fc" id="L51">			double pontos = valor / 100;</span>
+<span class="fc" id="L52">			this.pontosAcumulados += (int)pontos;</span>
+		}
+<span class="fc" id="L54">	}</span>
+	
+	public double getPercentualDeDesconto() {
+<span class="fc" id="L57">		return this.percentualDeDesconto;</span>
+	}
+	
+	public void setPercentualDeDesconto(double novoPercentualDeDesconto) {
+<span class="fc" id="L61">		this.percentualDeDesconto = novoPercentualDeDesconto;</span>
+<span class="fc" id="L62">	}</span>
+	
+	public int getPontosAcumulados() {
+<span class="nc" id="L65">		return this.pontosAcumulados;</span>
+	}
+	
+	public void setPontosAcumulados(int novoPontosAcumulados) {
+<span class="nc" id="L69">		this.pontosAcumulados = novoPontosAcumulados;</span>
+<span class="nc" id="L70">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

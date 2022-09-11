@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RepositorioCliente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Atv1</a> &gt; <a href="index.source.html" class="el_package">com.acme.credvarejo.ado.cliente</a> &gt; <span class="el_source">RepositorioCliente.java</span></div><h1>RepositorioCliente.java</h1><pre class="source lang-java linenums">package com.acme.credvarejo.ado.cliente;
+
+import com.acme.credvarejo.classesGerais.Repositorios;
+import com.acme.credvarejo.cliente.Cliente;
+
+public class RepositorioCliente implements InterfaceRepositorioCliente{
+<span class="fc" id="L7">	public int posicao = 0;</span>
+<span class="fc" id="L8">	public Repositorios repositorios = new Repositorios(posicao);</span>
+	
+<span class="fc" id="L10">	public RepositorioCliente(int posicao) {</span>
+<span class="fc" id="L11">		this.posicao = posicao;</span>
+<span class="fc" id="L12">	}</span>
+	
+	public void incluir(Cliente novoCliente) {
+<span class="fc" id="L15">		repositorios.setClienteRepo(posicao, novoCliente);</span>
+<span class="fc" id="L16">		posicao++;</span>
+<span class="fc" id="L17">	}</span>
+	
+	//altera nome
+	public void alterar(long cpf, String nome) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">		if(posicao == 0) {</span>
+<span class="fc" id="L22">			System.out.println(&quot;Vazio!&quot;);</span>
+		}
+		
+<span class="fc" id="L25">		int impressao = 0;</span>
+		
+<span class="fc bfc" id="L27" title="All 2 branches covered.">		for(int i = 0; i &lt; posicao; i++) {</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">			if(repositorios.getClienteRepo(i).getCpf().getNumero() == cpf) {</span>
+<span class="nc" id="L29">				impressao++;</span>
+<span class="nc" id="L30">				repositorios.getClienteRepo(i).setNome(nome);</span>
+			}
+		}
+		
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">		if(impressao == 0) {</span>
+<span class="fc" id="L35">			System.out.println(&quot;Inv?lido!&quot;);</span>
+		}
+<span class="fc" id="L37">	}</span>
+	
+	public void excluir(long cpf) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">		if(posicao == 0) {</span>
+<span class="fc" id="L41">			System.out.println(&quot;Vazio!&quot;);</span>
+		}
+		
+<span class="fc bfc" id="L44" title="All 2 branches covered.">		for(int i = 0; i &lt; posicao; i++) {</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">			if(repositorios.getClienteRepo(i).getCpf().getNumero() == cpf) {</span>
+<span class="fc" id="L46">				repositorios.setClienteRepo(i, null);</span>
+<span class="fc" id="L47">				repositorios.setClienteRepo(i, repositorios.getClienteRepo(posicao - 1));</span>
+<span class="fc" id="L48">				repositorios.setClienteRepo(posicao - 1, null);</span>
+<span class="fc" id="L49">				posicao--;</span>
+			}
+		}
+<span class="fc" id="L52">	}</span>
+	
+	public void buscarPorChave(long cpf) {
+<span class="fc" id="L55">		int impressoes = 0;</span>
+		
+<span class="fc bfc" id="L57" title="All 2 branches covered.">		for(int i = 0; i &lt; posicao; i++) {</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">			if(repositorios.getClienteRepo(i).getCpf().getNumero() == cpf) {</span>
+<span class="fc" id="L59">				impressoes++;</span>
+<span class="fc" id="L60">				System.out.println(&quot;Cliente: &quot;+repositorios.getClienteRepo(i).getNome());</span>
+			}
+		}
+		
+<span class="fc bfc" id="L64" title="All 2 branches covered.">		if(impressoes == 0) {</span>
+<span class="fc" id="L65">			System.out.printf(&quot;Inv?lido&quot;);</span>
+		}
+<span class="fc" id="L67">	}</span>
+	
+	public void buscarTodos() {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		if(posicao == 0) {</span>
+<span class="fc" id="L71">			System.out.println(&quot;Vazio!&quot;);</span>
+		}
+		
+<span class="fc bfc" id="L74" title="All 2 branches covered.">		for(int i = 0; i &lt; posicao; i++) {</span>
+<span class="fc" id="L75">			System.out.println(&quot;Cliente: &quot;+repositorios.getClienteRepo(i).getNome()+&quot;\n&quot;);</span>
+		}
+<span class="fc" id="L77">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
